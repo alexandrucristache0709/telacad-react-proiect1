@@ -1,7 +1,7 @@
 import React from 'react';
 
 function UserItem(props) {
-    const {name, email, isGoldClient} = props;
+    const { id, name, email, isGoldClient, salary, image, deleteItem} = props;
 
     return (
         <div>
@@ -11,6 +11,9 @@ function UserItem(props) {
                 ? <h3>Client GOLD</h3>
                 : null
             }
+            <p>{ salary }</p>
+            <img src={ image } alt=''></img>
+            <button onClick={() => deleteItem(id)}>Sterge</button>
         </div>
     );
 }
