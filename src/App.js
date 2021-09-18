@@ -73,19 +73,29 @@ class App extends React.Component {
 
   submitAddForm(event, name, email, isGoldClient) {
     event.preventDefault();
-    this.setState(prevState => {
-      return {
-        users: [
-          ...prevState.users,
-          {
-            id: this.getMaxId(prevState.users) + 1,
-            name,
-            email,
-            isGoldClient
-          }
-        ]
-      }
-    });
+    if(name === ''){
+      alert("Insert name!");
+      return;
+    };
+
+    if(email.includes("@") && email.includes(".com")){
+      this.setState(prevState => {
+        return {
+          users: [
+            ...prevState.users,
+            {
+              id: this.getMaxId(prevState.users) + 1,
+              name,
+              email,
+              isGoldClient
+            }
+          ]
+        }
+      });
+    } else {
+      alert("Invalid email!");
+      return;
+    }
   }
 
   render() {
